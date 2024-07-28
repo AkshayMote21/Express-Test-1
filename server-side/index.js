@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import AllRoutes from './routes/index.js'
 const app = express();
 
 app.get('/', function (req, res) {
@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
 dotenv.config();
 app.use(express.json());
 
+app.use('/api/v2',AllRoutes);
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.log("Database connected");
